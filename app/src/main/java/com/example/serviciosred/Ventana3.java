@@ -9,13 +9,13 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 
 public class Ventana3 extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
 
-    private MapView mapView;
+    private MapFragment mapFragment;
     private GoogleMap googleMap;
 
     public Ventana3() {
@@ -26,9 +26,11 @@ public class Ventana3 extends Fragment implements OnMapReadyCallback, GoogleMap.
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ventana3, container, false);
 
-        mapView = view.findViewById(R.id.mapView);
-        mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync(this);
+        // ***** Ligamos los recursos del fragmento *****
+        mapFragment = (MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.map3);
+        // ************************************************
+
+        mapFragment.getMapAsync(this);
 
         return view;
     }

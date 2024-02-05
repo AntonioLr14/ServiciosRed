@@ -19,12 +19,9 @@ public class MainActivity extends AppCompatActivity {
         //view pager2 nuevo
         ViewPager2 viewPager2=findViewById(R.id.view_pager);
         viewPager2.setAdapter(new MiPageAdapter(this));
+        viewPager2.setUserInputEnabled(false);
         //tabs
         TabLayout tabs=findViewById(R.id.tabs);
-       /* tabs.addTab(tabs.newTab().setText("AUDIO"));
-        tabs.addTab(tabs.newTab().setText("VIDEO"));
-        tabs.addTab(tabs.newTab().setText("EXTRA"));*/
-        //view pager2 nuevo
         //tablayoutMediator sirve para asignar los tabs al viewpager e indicamos los nombres
         new TabLayoutMediator(tabs,viewPager2,new TabLayoutMediator.TabConfigurationStrategy(){
 
@@ -43,5 +40,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }).attach();
+
     }
 }

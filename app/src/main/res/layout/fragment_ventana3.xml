@@ -6,14 +6,10 @@
     android:orientation="vertical"
     tools:ignore="ExtraText">
 
-
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/map3"
+        android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:apiKey="AIzaSyBbEM42CgQfY5hpQVLZk-_fSOxFdAwrC5k"
-        android:clickable="true" />
-
+        android:layout_height="match_parent" />
 
 </LinearLayout>
