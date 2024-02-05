@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <RadioGroup
+            android:id="@+id/rgTipoMapa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rbNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Carreteras" />
+            <RadioButton
+                android:id="@+id/rbSatelite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Satélite" />
+            <RadioButton
+                android:id="@+id/rbHibrido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Híbrido" />
+            <RadioButton
+                android:id="@+id/rbTopografico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Topográfico" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

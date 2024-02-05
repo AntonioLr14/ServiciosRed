@@ -1,66 +1,47 @@
 package com.example.serviciosred;
 
-import androidx.annotation.IdRes;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.RadioGroup;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
-public class MainActivity extends AppCompatActivity  implements OnMapReadyCallback, RadioGroup.OnCheckedChangeListener, GoogleMap.OnMapClickListener{
-
-    private GoogleMap mapa;
-    private MapFragment mapFragment;
-    private RadioGroup rgTipoMapa;
-
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //view pager2 nuevo
+        ViewPager2 viewPager2=findViewById(R.id.view_pager);
+        viewPager2.setAdapter(new MiPageAdapter(this));
+        //tabs
+        TabLayout tabs=findViewById(R.id.tabs);
+       /* tabs.addTab(tabs.newTab().setText("AUDIO"));
+        tabs.addTab(tabs.newTab().setText("VIDEO"));
+        tabs.addTab(tabs.newTab().setText("EXTRA"));*/
+        //view pager2 nuevo
+        //tablayoutMediator sirve para asignar los tabs al viewpager e indicamos los nombres
+        new TabLayoutMediator(tabs,viewPager2,new TabLayoutMediator.TabConfigurationStrategy(){
 
-        // ***** Ligamos los recursos de la actividad *****
-        mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
-        rgTipoMapa = (RadioGroup) findViewById(R.id.rgTipoMapa);
-        // ************************************************
-
-        mapFragment.getMapAsync(this);
-        rgTipoMapa.setOnCheckedChangeListener(this);
-    }
-
-    @Override
-    public void onMapReady(GoogleMap map)
-    {
-        mapa = map;
-        mapa.setOnMapClickListener(this);
-    }
-
-
-    @Override
-    public void onCheckedChanged(RadioGroup radioGroup, @IdRes int checkedId) {
-        if (radioGroup.getId() == R.id.rgTipoMapa) {
-            if (checkedId == R.id.rbNormal) {
-                mapa.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-            } else if (checkedId == R.id.rbSatelite) {
-                mapa.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-            } else if (checkedId == R.id.rbHibrido) {
-                mapa.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-            } else if (checkedId == R.id.rbTopografico) {
-                mapa.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                switch (position) {
+                    case 0:
+                        tab.setText("VISTA");
+                        break;
+                    case 1:
+                        tab.setText("MARCADOR");
+                        break;
+                    case 2:
+                        tab.setText("COORD");
+                        break;
+                }
             }
-        }
+        }).attach();
     }
-
-
-    @Override
-    public void onMapClick(LatLng latLng) {
-
-    }
-
 }
