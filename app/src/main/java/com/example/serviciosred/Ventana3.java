@@ -19,7 +19,7 @@ public class Ventana3 extends Fragment implements OnMapReadyCallback, GoogleMap.
     private GoogleMap googleMap;
 
     public Ventana3() {
-        // Required empty public constructor
+
     }
 
     @Override
@@ -45,31 +45,8 @@ public class Ventana3 extends Fragment implements OnMapReadyCallback, GoogleMap.
         String message = "Ubicación seleccionada: Latitud " + latLng.latitude + ", Longitud " + latLng.longitude;
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
 
-        // Puedes agregar cualquier otra lógica que desees realizar
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        mapView.onResume();
-    }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        mapView.onPause();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mapView.onDestroy();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
-    }
 }
 
